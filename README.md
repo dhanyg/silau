@@ -31,6 +31,9 @@ Copy file `env` menjadi `.env`, kemudian ubah konfigurasi file `.env` pada bagia
 `database.default.password = your_database_password`  
 `database.default.DBDriver = MySQLi`  
    
+ Untuk proses deveopment, ubah environment menjadi development:  
+ `CI_ENVIRONMENT = development`  
+   
  Migrasi database  
  `php spark migrate`  
    
