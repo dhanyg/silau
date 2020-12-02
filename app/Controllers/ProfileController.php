@@ -14,7 +14,7 @@ class ProfileController extends BaseController
 
     public function show($id)
     {
-        $user = $this->User->findUser($id);
+        $user = $this->User->getUserDetail($id)->first();
         if (!$user) {
             return redirect()->to('/404');
         }
@@ -35,7 +35,7 @@ class ProfileController extends BaseController
         $data = [
             'title' => 'Profile',
             'header' => 'Edit Profile',
-            'user' => $this->User->findUser($id),
+            'user' => $this->User->getUserDetail($id)->first(),
             'validation' => service('validation'),
             'roles' => $roles->findAll()
         ];

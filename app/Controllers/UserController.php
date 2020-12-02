@@ -25,7 +25,7 @@ class UserController extends BaseController
         $data = [
             'title' => 'User Management',
             'header' => 'Browse User',
-            'users' => $user->orderBy('users.display_name', 'ASC')->paginate(5),
+            'users' => $user->orderBy('users.display_name')->paginate(5),
             'pager' => $user->pager,
             'currentPage' => $currentPage ? $currentPage : 1,
             'perPage' => 5
@@ -80,7 +80,7 @@ class UserController extends BaseController
             'title' => 'User Management',
             'header' => 'Edit User',
             'validation' => service('validation'),
-            'user' => $this->User->findUser($userID),
+            'user' => $this->User->getUserDetail($userID)->first(),
             'roles' => $this->Role->findAll()
         ];
         return view('users/edit', $data);
