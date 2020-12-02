@@ -241,48 +241,54 @@ class LaundrySeeder extends Seeder
 				'menu_id' => 4,
 				'role_id' => 1,
 			],
+
 			[
 				'id' => 5,
-				'menu_id' => 1,
-				'role_id' => 2,
+				'menu_id' => 5,
+				'role_id' => 1,
 			],
 			[
 				'id' => 6,
-				'menu_id' => 5,
+				'menu_id' => 6,
 				'role_id' => 1,
 			],
 			[
 				'id' => 7,
-				'menu_id' => 6,
+				'menu_id' => 7,
 				'role_id' => 1,
 			],
 			[
 				'id' => 8,
-				'menu_id' => 5,
+				'menu_id' => 1,
 				'role_id' => 2,
 			],
 			[
 				'id' => 9,
-				'menu_id' => 6,
+				'menu_id' => 5,
 				'role_id' => 2,
 			],
 			[
 				'id' => 10,
+				'menu_id' => 6,
+				'role_id' => 2,
+			],
+			[
+				'id' => 11,
 				'menu_id' => 1,
 				'role_id' => 3,
 			],
 			[
-				'id' => 11,
+				'id' => 12,
 				'menu_id' => 5,
 				'role_id' => 3,
 			],
 			[
-				'id' => 12,
+				'id' => 13,
 				'menu_id' => 6,
 				'role_id' => 3,
 			],
 			[
-				'id' => 13,
+				'id' => 14,
 				'menu_id' => 7,
 				'role_id' => 3,
 			],
