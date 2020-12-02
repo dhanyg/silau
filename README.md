@@ -44,3 +44,6 @@ Copy file `env` menjadi `.env`, kemudian ubah konfigurasi file `.env` pada bagia
  `php spark serve`  
    
  Akses url melalui web browser  
+   
+- username: admin | op | owner  
+- password: admin | 1234 | 1234  
