@@ -15,16 +15,18 @@ class SubmenuController extends BaseController
 
     public function index()
     {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $submenu = $this->Submenu->searchSubmenu($keyword);
+        } else {
+            $submenu = $this->Submenu->getAllSubmenu();
+        }
         $currentPage = $this->request->getVar('page');
         $data = [
             'title' => 'Submenu Management',
             'header' => 'Browse Submenu',
-            'all_submenu' => $this->Submenu
-                ->select('submenu.*, menu.display_name as menu_name')
-                ->join('menu', 'menu.id = submenu.menu_id')
-                ->orderBy('submenu.display_name', 'ASC')
-                ->paginate(5),
-            'pager' => $this->Submenu->pager,
+            'all_submenu' => $submenu->orderBy('submenu.display_name')->paginate(5),
+            'pager' => $submenu->pager,
             'currentPage' => $currentPage ? $currentPage : 1,
             'perPage' => 5
         ];

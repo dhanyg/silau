@@ -6,37 +6,57 @@
 
 <?= $this->section('body'); ?>
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-6">
         <a href="/users/create" class="btn btn-primary"><i class="fas fa-plus"></i> Add Users</a>
+        <?php if (isset($_GET['keyword'])) : ?>
+            <a href="/users" class="btn btn-warning">Reset Pencarian</a>
+        <?php endif ?>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-lg-6">
+        <form action="" method="get">
+            <div class="input-group">
+                <input type="text" class="form-control" name="keyword" placeholder="Ketik nama user">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="submit">Cari</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 <div class="row mt-3">
     <div class="col-lg-6">
         <div class="card shadow">
             <div class="card-body">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr class="text-center">
-                            <th>#</th>
-                            <th>User</th>
-                            <th>Role</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $no = 1;
-                        foreach ($users as $user) : ?>
-                            <tr>
-                                <td><?= $no++; ?></td>
-                                <td><?= $user['user_name']; ?></td>
-                                <td><?= $user['role_name']; ?></td>
-                                <td>
-                                    <a href="/users/detail/<?= $user['id']; ?>" class="btn btn-info">Detail</a>
-                                </td>
+                <?php if (!$users) : ?>
+                    <h6 class="text-center">Tidak ada data</h6>
+                <?php else : ?>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr class="text-center">
+                                <th>#</th>
+                                <th>User</th>
+                                <th>Role</th>
+                                <th>Actions</th>
                             </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1 + ($perPage * ($currentPage - 1));
+                            foreach ($users as $user) : ?>
+                                <tr>
+                                    <td><?= $no++; ?></td>
+                                    <td><?= $user['display_name']; ?></td>
+                                    <td><?= $user['role_name']; ?></td>
+                                    <td>
+                                        <a href="/users/detail/<?= $user['id']; ?>" class="btn btn-info">Detail</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                    <?= $pager->links('default', 'custom_pagination'); ?>
+                <?php endif ?>
             </div>
         </div>
     </div>

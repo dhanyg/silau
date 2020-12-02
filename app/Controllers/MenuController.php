@@ -12,12 +12,18 @@ class MenuController extends BaseController
     }
     public function index()
     {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $menu = $this->Menu->searchMenu($keyword);
+        } else {
+            $menu = $this->Menu;
+        }
         $currentPage = $this->request->getVar('page');
         $data = [
             'title' => 'Menu Management',
             'header' => 'Browse Menu',
-            'all_menu' => $this->Menu->orderBy('display_name', 'ASC')->paginate(5),
-            'pager' => $this->Menu->pager,
+            'all_menu' => $menu->orderBy('display_name', 'ASC')->paginate(5),
+            'pager' => $menu->pager,
             'currentPage' => $currentPage ? $currentPage : 1,
             'perPage' => 5
         ];

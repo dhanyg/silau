@@ -11,33 +11,54 @@
     </div>
 </div>
 <div class="row mt-3">
+    <div class="col-lg-6">
+        <form action="" method="get">
+            <div class="input-group">
+                <input type="text" class="form-control" name="keyword" placeholder="Ketik nama submenu">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="submit">Cari</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <?php if (isset($_GET['keyword'])) : ?>
+        <div class="col-lg-2">
+            <a href="/tools/submenu" class="btn btn-warning">Reset Pencarian</a>
+        </div>
+    <?php endif ?>
+</div>
+<div class="row mt-3">
     <div class="col-lg-8">
         <div class="card shadow">
             <div class="card-body">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr class="text-center">
-                            <th>#</th>
-                            <th>Submenu</th>
-                            <th>Menu Parent</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $no = 1 + ($perPage * ($currentPage - 1));
-                        foreach ($all_submenu as $submenu) : ?>
-                            <tr>
-                                <td class="text-center"><?= $no++; ?></td>
-                                <td><?= $submenu['display_name']; ?></td>
-                                <td><?= $submenu['menu_name']; ?></td>
-                                <td class="text-center">
-                                    <a href="/tools/submenu/edit/<?= $submenu['id']; ?>" class="btn btn-info">Edit</a>
-                                </td>
+                <?php if (!$all_submenu) : ?>
+                    <h6 class="text-center">Tidak ada data</h6>
+                <?php else : ?>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr class="text-center">
+                                <th>#</th>
+                                <th>Submenu</th>
+                                <th>Menu Parent</th>
+                                <th>Actions</th>
                             </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
-                <?= $pager->links('default', 'custom_pagination') ?>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1 + ($perPage * ($currentPage - 1));
+                            foreach ($all_submenu as $submenu) : ?>
+                                <tr>
+                                    <td class="text-center"><?= $no++; ?></td>
+                                    <td><?= $submenu['display_name']; ?></td>
+                                    <td><?= $submenu['menu_name']; ?></td>
+                                    <td class="text-center">
+                                        <a href="/tools/submenu/edit/<?= $submenu['id']; ?>" class="btn btn-info">Edit</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                    <?= $pager->links('default', 'custom_pagination') ?>
+                <?php endif ?>
             </div>
         </div>
     </div>

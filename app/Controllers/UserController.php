@@ -14,10 +14,21 @@ class UserController extends BaseController
     }
     public function index()
     {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $user = $this->User->searchUser($keyword);
+        } else {
+            $user = $this->User->getAllUsers();
+        }
+
+        $currentPage = $this->request->getVar('page');
         $data = [
             'title' => 'User Management',
             'header' => 'Browse User',
-            'users' => $this->User->getAllUser()->findAll()
+            'users' => $user->orderBy('users.display_name', 'ASC')->paginate(5),
+            'pager' => $user->pager,
+            'currentPage' => $currentPage ? $currentPage : 1,
+            'perPage' => 5
         ];
         return view('users/index', $data);
     }

@@ -13,19 +13,30 @@ class User extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
 
-    public function getAllUser()
+    public function getAllUsers()
     {
         $userModel = new User();
-        return $userModel->select('users.id, users.display_name as user_name, roles.display_name as role_name')
-            ->join('roles', 'roles.id = users.role_id')
-            ->orderBy('users.display_name', 'ASC');
+        return $userModel
+            ->select('users.*, roles.display_name as role_name')
+            ->join('roles', 'roles.id = users.role_id');
     }
 
     public function getUserDetail($userId)
     {
         $userModel = new User();
-        return $userModel->select('users.*, roles.display_name as role_name')
+        return $userModel
+            ->select('users.*, roles.display_name as role_name')
             ->join('roles', 'roles.id = users.role_id')
             ->where('users.id', $userId);
+    }
+
+    public function searchUser($keyword)
+    {
+        $userModel = new User();
+        return $userModel
+            ->select('users.*, roles.display_name as role_name')
+            ->join('roles', 'roles.id = users.role_id')
+            ->like('users.username', $keyword)
+            ->orLike('users.display_name', $keyword);
     }
 }

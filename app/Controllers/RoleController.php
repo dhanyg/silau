@@ -13,10 +13,21 @@ class RoleController extends BaseController
 
     public function index()
     {
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $role = $this->Role->like('name', $keyword)->orLike('display_name', $keyword);
+        } else {
+            $role = $this->Role;
+        }
+
+        $currentPage = $this->request->getVar('page');
         $data = [
             'title' => 'Roles Management',
             'header' => 'Browse Roles',
-            'roles' => $this->Role->orderBy('name', 'ASC')->findAll()
+            'roles' => $role->orderBy('name', 'ASC')->paginate(5),
+            'pager' => $role->pager,
+            'currentPage' => $currentPage ? $currentPage : 1,
+            'perPage' => 5
         ];
         return view('roles/index', $data);
     }
