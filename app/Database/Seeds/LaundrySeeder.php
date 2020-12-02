@@ -196,7 +196,7 @@ class LaundrySeeder extends Seeder
 				'id' => 9,
 				'menu_id' => 7,
 				'name' => 'report-transaksi-pengambilan',
-				'display_name' => 'Report Transaksi Pengambilan',
+				'display_name' => 'Report Pengambilan',
 				'url' => 'reports/transaksi-pengambilan',
 				'is_active' => 1
 			],
