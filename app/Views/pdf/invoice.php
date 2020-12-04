@@ -181,7 +181,7 @@
 
         <div class="section2">
             <h6>Jumlah Item:</h6>
-            <span>0</span>
+            <span><?= $data['jumlah_item']; ?></span>
         </div>
 
         <div class="section3">

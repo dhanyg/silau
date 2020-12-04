@@ -6,16 +6,11 @@
 
 <?= $this->section('body'); ?>
 <?php helper('menuaccess'); ?>
-<!-- <div class="row">
-    <div class="col-lg-4">
-        <a href="/tools/access/create" class="btn btn-primary"><i class="fas fa-plus"></i> New Access</a>
-    </div>
-</div> -->
 <div class="row mt-3">
     <div class="col-lg-12">
         <div class="card shadow">
             <div class="card-body">
-                <table class="table table-bordered table-striped">
+                <table class="table table-responsive table-bordered table-striped">
                     <thead>
                         <tr class="text-center">
                             <th>#</th>

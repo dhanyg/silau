@@ -17,7 +17,7 @@
     <div class="col-lg-6">
         <form action="" method="get">
             <div class="input-group">
-                <input type="text" class="form-control" name="keyword" placeholder="Ketik nama role">
+                <input type="text" class="form-control" name="keyword" placeholder="Ketik nama role" autocomplete="off">
                 <div class="input-group-append">
                     <button class="btn btn-secondary" type="submit">Cari</button>
                 </div>
@@ -32,7 +32,7 @@
                 <?php if (!$roles) : ?>
                     <h6 class="text-center">Tidak ada data</h6>
                 <?php else : ?>
-                    <table class="table table-bordered table-striped">
+                    <table class="table table-responsive table-bordered table-striped">
                         <thead>
                             <tr class="text-center">
                                 <th>#</th>

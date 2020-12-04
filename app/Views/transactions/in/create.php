@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="col-md-3 mb-3">
                             <label for="nama">Nama</label>
-                            <input class="form-control <?= $validation->hasError('nama') ? 'is-invalid' : ''; ?>" type="text" name="nama" id="nama" value="<?= old('nama'); ?>" autofocus>
+                            <input class="form-control <?= $validation->hasError('nama') ? 'is-invalid' : ''; ?>" type="text" name="nama" id="nama" value="<?= old('nama'); ?>" autofocus autocomplete="off">
                             <div class="invalid-feedback">
                                 <?= $validation->getError('nama'); ?>
                             </div>
@@ -59,10 +59,10 @@
                     <!-- Item -->
                     <div class="row">
                         <div class="col-md-4 mb-3">
-                            <input class="form-control" type="text" name="item[]" id="item" value="<?= old('item[]'); ?>" placeholder="Item" required>
+                            <input class="form-control" type="text" name="item[]" id="item" value="<?= old('item[]'); ?>" placeholder="Item" required autocomplete="off">
                         </div>
                         <div class="col-md-2 mb-3">
-                            <input class="form-control" type="number" name="jumlah[]" id="jumlah" value="<?= old('jumlah[]'); ?>" placeholder="Qty" min="0" step="0.1" required>
+                            <input class="form-control" type="number" name="jumlah[]" id="jumlah" value="<?= old('jumlah[]'); ?>" placeholder="Qty" min="0" step="0.1" required autocomplete="off">
                         </div>
                         <div class="col-md-2 mb-3">
                             <select name="satuan[]" id="satuan" class="custom-select" required>
@@ -72,7 +72,7 @@
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <input class="form-control input-harga" type="number" name="harga[]" id="harga" value="<?= old('harga[]'); ?>" placeholder="Harga" min="0" step="100" required>
+                            <input class="form-control input-harga" type="number" name="harga[]" id="harga" value="<?= old('harga[]'); ?>" placeholder="Harga" min="0" step="100" required autocomplete="off">
                         </div>
                     </div>
                     <hr id="beforeAddItem">
@@ -93,7 +93,7 @@
                         </div>
                         <div class="col-md-2 mb-3">
                             <label for="jumlah_item">Jumlah Item</label>
-                            <input class="form-control <?= $validation->hasError('jumlah_item') ? 'is-invalid' : ''; ?>" type="number" name="jumlah_item" id="jumlah_item" value="<?= old('jumlah_item', 0); ?>">
+                            <input class="form-control <?= $validation->hasError('jumlah_item') ? 'is-invalid' : ''; ?>" type="number" name="jumlah_item" id="jumlah_item" value="<?= old('jumlah_item', 0); ?>" autocomplete="off">
                             <div class="invalid-feedback">
                                 <?= $validation->getError('jumlah_item'); ?>
                             </div>
@@ -132,10 +132,10 @@
             $('#beforeAddItem').before(`
             <div class="row new-item">
                 <div class="col-md-4 mb-3">
-                    <input class="form-control" type="text" name="item[]" id="item" value="<?= old('item[]'); ?>" placeholder="Item" required>
+                    <input class="form-control" type="text" name="item[]" id="item" value="<?= old('item[]'); ?>" placeholder="Item" required autocomplete="off">
                 </div>
                 <div class="col-md-2 mb-3">
-                    <input class="form-control" type="number" name="jumlah[]" id="jumlah" value="<?= old('jumlah[]'); ?>" placeholder="Qty" min="0" step="0.1" required>
+                    <input class="form-control" type="number" name="jumlah[]" id="jumlah" value="<?= old('jumlah[]'); ?>" placeholder="Qty" min="0" step="0.1" required autocomplete="off">
                 </div>
                 <div class="col-md-2 mb-3">
                     <select name="satuan[]" id="satuan" class="custom-select" required>
@@ -146,7 +146,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <div class="d-flex">
-                        <input class="form-control input-harga" type="number" name="harga[]" id="harga" value="<?= old('harga[]'); ?>" placeholder="Harga" min="0" step="100" required>
+                        <input class="form-control input-harga" type="number" name="harga[]" id="harga" value="<?= old('harga[]'); ?>" placeholder="Harga" min="0" step="100" required autocomplete="off">
                         <button type="button" class="ml-2 px-3 btn btn-sm btn-danger delete-item"><i class="fas fa-minus"></i></button>
                     </div>
                 </div>

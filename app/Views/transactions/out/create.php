@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group">
                         <label for="transaksi_masuk_id">No. Transaksi</label>
-                        <input class="form-control <?= $validation->hasError('transaksi_masuk_id') ? 'is-invalid' : ''; ?>" type="number" name="transaksi_masuk_id" id="transaksi_masuk_id" value="<?= old('transaksi_masuk_id') ?>">
+                        <input class="form-control <?= $validation->hasError('transaksi_masuk_id') ? 'is-invalid' : ''; ?>" type="number" name="transaksi_masuk_id" id="transaksi_masuk_id" value="<?= old('transaksi_masuk_id') ?>" autocomplete="off">
                         <div class="invalid-feedback">
                             <?= $validation->getError('transaksi_masuk_id'); ?>
                         </div>

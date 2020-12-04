@@ -72,7 +72,7 @@
                 <?php if (!$transaksi_masuk) : ?>
                     <h6 class="text-center">belum ada transaksi</h6>
                 <?php else : ?>
-                    <table class="table table-borderless table-hover">
+                    <table class="table table-responsive table-borderless table-hover">
                         <thead>
                             <tr class="text-center">
                                 <th>#</th>

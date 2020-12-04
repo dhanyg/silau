@@ -59,7 +59,7 @@
         <div class="row mt-4">
             <div class="col-md-12">
                 <!-- <div class="section-title">Order Summary</div> -->
-                <p class="section-lead text-right"><strong>Jumlah item:</strong><br>0</p>
+                <p class="section-lead text-right"><strong>Jumlah item:</strong><br><?= $transaksi['jumlah_item']; ?></p>
                 <div class="table-responsive">
                     <table class="table table-striped table-hover table-md">
                         <tr>

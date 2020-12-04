@@ -19,7 +19,7 @@
                 <?php if (!$pemasukan) : ?>
                     <h6 class="text-center m-0">Belum ada transaksi</h6>
                 <?php else : ?>
-                    <table class="table table-bordered table-striped">
+                    <table class="table table-responsive table-bordered table-striped">
                         <thead>
                             <tr class="text-center">
                                 <th>#</th>

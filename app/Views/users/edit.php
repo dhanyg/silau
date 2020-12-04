@@ -10,7 +10,7 @@
                     <div class="form-group row">
                         <label for="display_name" class="col-sm-4 col-form-label text-right">Name</label>
                         <div class="col-sm">
-                            <input type="text" class="form-control form-control-sm <?= $validation->hasError('display_name') ? 'is-invalid' : ''; ?>" name="display_name" id="display_name" value="<?= old('display_name', $user['display_name']); ?>">
+                            <input type="text" class="form-control form-control-sm <?= $validation->hasError('display_name') ? 'is-invalid' : ''; ?>" name="display_name" id="display_name" value="<?= old('display_name', $user['display_name']); ?>" autocomplete="off">
                             <div class="invalid-feedback">
                                 <?= $validation->getError('display_name'); ?>
                             </div>
@@ -19,7 +19,7 @@
                     <div class="form-group row">
                         <label for="username" class="col-sm-4 col-form-label text-right">Username</label>
                         <div class="col-sm">
-                            <input type="text" class="form-control form-control-sm <?= $validation->hasError('username') ? 'is-invalid' : ''; ?>" name="username" id="username" value="<?= old('username', $user['username']); ?>">
+                            <input type="text" class="form-control form-control-sm <?= $validation->hasError('username') ? 'is-invalid' : ''; ?>" name="username" id="username" value="<?= old('username', $user['username']); ?>" autocomplete="off">
                             <div class="invalid-feedback">
                                 <?= $validation->getError('username'); ?>
                             </div>
@@ -41,7 +41,7 @@
                     <div class="form-group row">
                         <label for="email" class="col-sm-4 col-form-label text-right">Email</label>
                         <div class="col-sm">
-                            <input type="email" class="form-control form-control-sm <?= $validation->hasError('email') ? 'is-invalid' : ''; ?>" name="email" id="email" value="<?= old('email', $user['email']); ?>">
+                            <input type="email" class="form-control form-control-sm <?= $validation->hasError('email') ? 'is-invalid' : ''; ?>" name="email" id="email" value="<?= old('email', $user['email']); ?>" autocomplete="off">
                             <div class="invalid-feedback">
                                 <?= $validation->getError('email'); ?>
                             </div>
@@ -50,7 +50,7 @@
                     <div class="form-group row">
                         <label for="phone" class="col-sm-4 col-form-label text-right">Phone</label>
                         <div class="col-sm">
-                            <input type="text" class="form-control form-control-sm <?= $validation->hasError('phone') ? 'is-invalid' : ''; ?>" name="phone" id="phone" value="<?= old('phone', $user['phone']); ?>">
+                            <input type="text" class="form-control form-control-sm <?= $validation->hasError('phone') ? 'is-invalid' : ''; ?>" name="phone" id="phone" value="<?= old('phone', $user['phone']); ?>" autocomplete="off">
                             <div class="invalid-feedback">
                                 <?= $validation->getError('phone'); ?>
                             </div>

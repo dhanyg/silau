@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="keterangan">Keterangan Pengeluaran</label>
-                        <input class="form-control <?= $validation->hasError('keterangan') ? 'is-invalid' : ''; ?>" type="text" name="keterangan" id="keterangan" value="<?= old('keterangan', $pengeluaran['keterangan']) ?>" autofocus>
+                        <input class="form-control <?= $validation->hasError('keterangan') ? 'is-invalid' : ''; ?>" type="text" name="keterangan" id="keterangan" value="<?= old('keterangan', $pengeluaran['keterangan']) ?>" autofocus autocomplete="off">
                         <div class="invalid-feedback">
                             <?= $validation->getError('keterangan'); ?>
                         </div>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="form-group">
                         <label for="jumlah">Jumlah (Rp)</label>
-                        <input class="form-control <?= $validation->hasError('jumlah') ? 'is-invalid' : ''; ?>" type="number" name="jumlah" id="jumlah" value="<?= old('jumlah', $pengeluaran['jumlah']) ?>">
+                        <input class="form-control <?= $validation->hasError('jumlah') ? 'is-invalid' : ''; ?>" type="number" name="jumlah" id="jumlah" value="<?= old('jumlah', $pengeluaran['jumlah']) ?>" autocomplete="off">
                         <div class="invalid-feedback">
                             <?= $validation->getError('jumlah'); ?>
                         </div>
