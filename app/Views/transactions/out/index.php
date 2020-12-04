@@ -6,15 +6,15 @@
 
 <?= $this->section('body'); ?>
 <div class="row justify-content-between">
-    <div class="col-lg-4">
+    <div class="col-lg-4 my-1">
         <a href="/transactions/transaksi-pengambilan/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
     </div>
     <?php if (isset($_GET['keyword'])) : ?>
-        <div class="col-lg-4">
+        <div class="col-lg-4 my-1">
             <a href="/transactions/transaksi-pengambilan" class="btn btn-warning">Reset Pencarian</a>
         </div>
     <?php endif ?>
-    <div class="col-lg-4">
+    <div class="col-lg-4 my-1">
         <form action="" method="get">
             <div class="input-group">
                 <input type="text" class="form-control" name="keyword" placeholder="Ketik nama atau no. transaksi" autocomplete="off">
@@ -32,35 +32,36 @@
                 <?php if (!$pengambilan) : ?>
                     <h6 class="text-center m-0">Tidak ada data</h6>
                 <?php else : ?>
-
-                    <table class="table table-responsive table-bordered table-striped">
-                        <thead>
-                            <tr class="text-center">
-                                <th>#</th>
-                                <th>Tgl. Ambil</th>
-                                <th>Nama</th>
-                                <th>No. Transaksi</th>
-                                <th>Operator</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $no = 1 + ($perPage * ($currentPage - 1));
-                            foreach ($pengambilan as $data) : ?>
-                                <tr>
-                                    <td class="text-center"><?= $no++; ?></td>
-                                    <td class="text-center"><?= date('d-m-Y', strtotime($data['tgl_ambil'])); ?></td>
-                                    <td><?= $data['nama']; ?></td>
-                                    <td class="text-center"><?= $data['transaksi_masuk_id']; ?></td>
-                                    <td class="text-center"><?= $data['user_creator']; ?></td>
-                                    <td class="text-center">
-                                        <a href="/transactions/transaksi-masuk/detail/<?= $data['transaksi_masuk_id']; ?>" class="btn btn-info">Detail Transaksi</a>
-                                        <button type="button" class="btn btn-danger" id="delete-<?= $data['transaksi_masuk_id'] ?>">Delete</button>
-                                    </td>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>#</th>
+                                    <th>Tgl. Ambil</th>
+                                    <th>Nama</th>
+                                    <th>No. Transaksi</th>
+                                    <th>Operator</th>
+                                    <th>Actions</th>
                                 </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php $no = 1 + ($perPage * ($currentPage - 1));
+                                foreach ($pengambilan as $data) : ?>
+                                    <tr>
+                                        <td class="text-center"><?= $no++; ?></td>
+                                        <td class="text-center"><?= date('d-m-Y', strtotime($data['tgl_ambil'])); ?></td>
+                                        <td><?= $data['nama']; ?></td>
+                                        <td class="text-center"><?= $data['transaksi_masuk_id']; ?></td>
+                                        <td class="text-center"><?= $data['user_creator']; ?></td>
+                                        <td class="text-center">
+                                            <a href="/transactions/transaksi-masuk/detail/<?= $data['transaksi_masuk_id']; ?>" class="my-1 btn btn-info">Detail Transaksi</a>
+                                            <button type="button" class="my-1 btn btn-danger" id="delete-<?= $data['transaksi_masuk_id'] ?>">Delete</button>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    </div>
                     <?= $pager->links('default', 'custom_pagination') ?>
                 <?php endif ?>
             </div>

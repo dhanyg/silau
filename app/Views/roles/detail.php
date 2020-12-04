@@ -14,25 +14,27 @@
     <div class="col-lg-6">
         <div class="card shadow">
             <div class="card-body">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr class="text-center">
-                            <th>Role Name</th>
-                            <th>Display Name</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><?= $role['name']; ?></td>
-                            <td><?= $role['display_name']; ?></td>
-                            <td class="text-center">
-                                <a href="/roles/edit/<?= $role['id']; ?>" class="btn btn-warning">Edit</a>
-                                <button class="btn btn-danger" id="delete">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr class="text-center">
+                                <th>Role Name</th>
+                                <th>Display Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><?= $role['name']; ?></td>
+                                <td><?= $role['display_name']; ?></td>
+                                <td class="text-center">
+                                    <a href="/roles/edit/<?= $role['id']; ?>" class="btn btn-warning">Edit</a>
+                                    <button class="btn btn-danger" id="delete">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

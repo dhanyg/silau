@@ -20,7 +20,7 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 my-1">
                         <div class="mb-2">
                             <strong>Pelanggan:</strong><br>
                             <?= $transaksi['nama']; ?><br>
@@ -38,7 +38,7 @@
                             <?= $transaksi['lunas'] == 1 ? 'Lunas' : 'Non-lunas'; ?><br>
                         </div>
                     </div>
-                    <div class="col-md-6 text-md-right">
+                    <div class="col-md-6 my-1 text-md-right">
                         <div class="mb-2">
                             <strong>Tanggal Masuk:</strong><br>
                             <?= date('d/m/Y', strtotime($transaksi['tgl_masuk'])); ?><br>
@@ -58,7 +58,6 @@
 
         <div class="row mt-4">
             <div class="col-md-12">
-                <!-- <div class="section-title">Order Summary</div> -->
                 <p class="section-lead text-right"><strong>Jumlah item:</strong><br><?= $transaksi['jumlah_item']; ?></p>
                 <div class="table-responsive">
                     <table class="table table-striped table-hover table-md">

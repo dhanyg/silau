@@ -22,9 +22,9 @@
                 </div>
             </div>
             <div class="card-footer d-flex justify-content-between">
-                <button class="btn btn-secondary" disabled>Created at <?= date('d M Y', strtotime($user['created_at'])); ?></button>
+                <button class="mr-1 btn btn-secondary" disabled>Created at <?= date('d M Y', strtotime($user['created_at'])); ?></button>
                 <?php if (session('id') === $user['id']) : ?>
-                    <a href="/profile/edit/<?= $user['id']; ?>" class="btn btn-info">Change Profile</a>
+                    <a href="/profile/edit/<?= $user['id']; ?>" class="ml-1 btn btn-info">Change Profile</a>
                 <?php endif ?>
             </div>
         </div>

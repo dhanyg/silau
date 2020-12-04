@@ -34,8 +34,8 @@
                             <?= $validation->getError('jumlah'); ?>
                         </div>
                     </div>
-                    <a href="/cash-flow/pengeluaran" class="btn btn-secondary">Cancel</a>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="/cash-flow/pengeluaran" class="btn btn-secondary">Batal</a>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>

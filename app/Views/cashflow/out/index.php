@@ -6,15 +6,15 @@
 
 <?= $this->section('body'); ?>
 <div class="row justify-content-between">
-    <div class="col-lg-4">
+    <div class="col-lg-4 my-1">
         <a href="/cash-flow/pengeluaran/create" class="btn btn-primary">Tambah Data</a>
     </div>
     <?php if (isset($_GET['keyword'])) : ?>
-        <div class="col-lg-4">
+        <div class="col-lg-4 my-1">
             <a href="/cash-flow/pengeluaran" class="btn btn-warning">Reset Pencarian</a>
         </div>
     <?php endif ?>
-    <div class="col-lg-4">
+    <div class="col-lg-4 my-1">
         <form action="" method="get">
             <div class="input-group">
                 <input type="text" class="form-control" name="keyword" placeholder="Ketik kata pencarian" autocomplete="off">
@@ -32,32 +32,34 @@
                 <?php if (!$pengeluaran) : ?>
                     <h6 class="text-center m-0">Tidak ada data</h6>
                 <?php else : ?>
-                    <table class="table table-responsive table-bordered table-striped">
-                        <thead>
-                            <tr class="text-center">
-                                <th>#</th>
-                                <th>Keterangan</th>
-                                <th>Tanggal</th>
-                                <th>Jumlah</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $no = 1 + ($perPage * ($currentPage - 1));
-                            foreach ($pengeluaran as $data) : ?>
-                                <tr>
-                                    <td class="text-center"><?= $no++; ?></td>
-                                    <td><?= $data['keterangan']; ?></td>
-                                    <td class="text-center"><?= date('d/m/Y', strtotime($data['tanggal'])); ?></td>
-                                    <td class="text-right">Rp<?= number_format($data['jumlah']); ?></td>
-                                    <td class="text-center">
-                                        <a href="/cash-flow/pengeluaran/edit/<?= $data['id']; ?>" class="btn btn-warning">Edit</a>
-                                        <button type="button" class="btn btn-danger" id="delete-<?= $data['id'] ?>">Delete</button>
-                                    </td>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>#</th>
+                                    <th>Keterangan</th>
+                                    <th>Tanggal</th>
+                                    <th>Jumlah</th>
+                                    <th>Action</th>
                                 </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php $no = 1 + ($perPage * ($currentPage - 1));
+                                foreach ($pengeluaran as $data) : ?>
+                                    <tr>
+                                        <td class="text-center"><?= $no++; ?></td>
+                                        <td><?= $data['keterangan']; ?></td>
+                                        <td class="text-center"><?= date('d/m/Y', strtotime($data['tanggal'])); ?></td>
+                                        <td class="text-right">Rp<?= number_format($data['jumlah']); ?></td>
+                                        <td class="text-center">
+                                            <a href="/cash-flow/pengeluaran/edit/<?= $data['id']; ?>" class="btn btn-warning">Edit</a>
+                                            <button type="button" class="btn btn-danger" id="delete-<?= $data['id'] ?>">Delete</button>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    </div>
                     <?= $pager->links('default', 'custom_pagination') ?>
                 <?php endif ?>
             </div>

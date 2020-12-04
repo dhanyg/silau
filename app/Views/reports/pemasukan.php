@@ -13,12 +13,12 @@
                 <div class="mb-4">
                     <h5 class="text-center mb-3">Filter Laporan</h5>
                     <form action="" method="GET" class="form-inline justify-content-center">
-                        <label for="dari_tanggal">Dari</label>
-                        <input type="text" class="datepicker mx-2 form-control form-control-sm" name="dari_tanggal" id="dari_tanggal" required>
-                        <label for="sampai_tanggal">Sampai</label>
-                        <input type="text" class="datepicker mx-2 form-control form-control-sm" name="sampai_tanggal" id="sampai_tanggal" required>
-                        <button type="submit" class="ml-1 btn btn-sm btn-primary">Filter</button>
-                        <a href="/reports/pemasukan" class="ml-2 btn btn-sm btn-secondary">Reset Filter</a>
+                        <label for="dari_tanggal" class="my-1 ">Dari</label>
+                        <input type="text" class="my-1 datepicker mx-2 form-control form-control-sm" name="dari_tanggal" id="dari_tanggal" required>
+                        <label for="sampai_tanggal" class="my-1 ">Sampai</label>
+                        <input type="text" class="my-1 datepicker mx-2 form-control form-control-sm" name="sampai_tanggal" id="sampai_tanggal" required>
+                        <button type="submit" class="my-1 ml-1 btn btn-sm btn-primary">Filter</button>
+                        <a href="/reports/pemasukan" class="my-1 ml-2 btn btn-sm btn-secondary">Reset Filter</a>
                     </form>
                 </div>
                 <?php if (!$pemasukan) : ?>
@@ -27,31 +27,33 @@
                     <?php if (isset($_GET['dari_tanggal'])) : ?>
                         <a href="/reports/pemasukan/generate-pdf/<?= $_GET['dari_tanggal']; ?>/<?= $_GET['sampai_tanggal']; ?>" class="btn btn-sm btn-danger mb-3"><i class="far fa-file-pdf mr-2"></i>PDF</a>
                     <?php endif ?>
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr class="text-center">
-                                <th>#</th>
-                                <th>Tanggal</th>
-                                <th>Keterangan</th>
-                                <th>No. Transaksi</th>
-                                <th class="text-left">Nama</th>
-                                <th class="text-right">Jumlah</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $no = 1 + ($perPage * ($currentPage - 1));
-                            foreach ($pemasukan as $data) : ?>
-                                <tr>
-                                    <td class="text-center"><?= $no++; ?></td>
-                                    <td class="text-center"><?= date('d/m/Y', strtotime($data['tanggal'])); ?></td>
-                                    <td><?= $data['keterangan']; ?></td>
-                                    <td class="text-center"><?= $data['transaksi_masuk_id']; ?></td>
-                                    <td><?= $data['nama']; ?></td>
-                                    <td class="text-right">Rp<?= number_format($data['jumlah']); ?></td>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>#</th>
+                                    <th>Tanggal</th>
+                                    <th>Keterangan</th>
+                                    <th>No. Transaksi</th>
+                                    <th class="text-left">Nama</th>
+                                    <th class="text-right">Jumlah</th>
                                 </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php $no = 1 + ($perPage * ($currentPage - 1));
+                                foreach ($pemasukan as $data) : ?>
+                                    <tr>
+                                        <td class="text-center"><?= $no++; ?></td>
+                                        <td class="text-center"><?= date('d/m/Y', strtotime($data['tanggal'])); ?></td>
+                                        <td><?= $data['keterangan']; ?></td>
+                                        <td class="text-center"><?= $data['transaksi_masuk_id']; ?></td>
+                                        <td><?= $data['nama']; ?></td>
+                                        <td class="text-right">Rp<?= number_format($data['jumlah']); ?></td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    </div>
                     <?= $pager->links('default', 'custom_pagination'); ?>
                 <?php endif ?>
             </div>

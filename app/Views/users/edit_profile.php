@@ -8,7 +8,7 @@
                 <form action="/profile/update/<?= $user['id']; ?>" method="post">
                     <input type="hidden" name="_method" value="PUT">
                     <div class="form-group row">
-                        <label for="display_name" class="col-sm-4 col-form-label text-right">Name</label>
+                        <label for="display_name" class="col-sm-4 col-form-label text-sm-right">Name</label>
                         <div class="col-sm">
                             <input type="text" class="form-control form-control-sm <?= $validation->hasError('display_name') ? 'is-invalid' : ''; ?>" name="display_name" id="display_name" value="<?= old('display_name', $user['display_name']); ?>">
                             <div class="invalid-feedback">
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="username" class="col-sm-4 col-form-label text-right">Username</label>
+                        <label for="username" class="col-sm-4 col-form-label text-sm-right">Username</label>
                         <div class="col-sm">
                             <input type="text" class="form-control form-control-sm <?= $validation->hasError('username') ? 'is-invalid' : ''; ?>" name="username" id="username" value="<?= old('username', $user['username']); ?>">
                             <div class="invalid-feedback">
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="role_id" class="col-sm-4 col-form-label text-right">Role</label>
+                        <label for="role_id" class="col-sm-4 col-form-label text-sm-right">Role</label>
                         <div class="col-sm">
                             <select name="role_id" id="role_id" class="custom-select custom-select-sm">
                                 <?php foreach ($roles as $role) : ?>
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="email" class="col-sm-4 col-form-label text-right">Email</label>
+                        <label for="email" class="col-sm-4 col-form-label text-sm-right">Email</label>
                         <div class="col-sm">
                             <input type="email" class="form-control form-control-sm <?= $validation->hasError('email') ? 'is-invalid' : ''; ?>" name="email" id="email" value="<?= old('email', $user['email']); ?>">
                             <div class="invalid-feedback">
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="phone" class="col-sm-4 col-form-label text-right">Phone</label>
+                        <label for="phone" class="col-sm-4 col-form-label text-sm-right">Phone</label>
                         <div class="col-sm">
                             <input type="text" class="form-control form-control-sm <?= $validation->hasError('phone') ? 'is-invalid' : ''; ?>" name="phone" id="phone" value="<?= old('phone', $user['phone']); ?>">
                             <div class="invalid-feedback">

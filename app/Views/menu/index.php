@@ -32,27 +32,29 @@
                 <?php if (!$all_menu) : ?>
                     <h6 class="text-center">Tidak ada data</h6>
                 <?php else : ?>
-                    <table class="table table-responsive table-bordered table-striped">
-                        <thead>
-                            <tr class="text-center">
-                                <th>#</th>
-                                <th>Menu</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $no = 1 + ($perPage * ($currentPage - 1));
-                            foreach ($all_menu as $menu) : ?>
-                                <tr>
-                                    <td class="text-center"><?= $no++; ?></td>
-                                    <td><?= $menu['display_name']; ?></td>
-                                    <td class="text-center">
-                                        <a href="/tools/menu/edit/<?= $menu['id']; ?>" class="btn btn-info">Edit</a>
-                                    </td>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>#</th>
+                                    <th>Menu</th>
+                                    <th>Actions</th>
                                 </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php $no = 1 + ($perPage * ($currentPage - 1));
+                                foreach ($all_menu as $menu) : ?>
+                                    <tr>
+                                        <td class="text-center"><?= $no++; ?></td>
+                                        <td><?= $menu['display_name']; ?></td>
+                                        <td class="text-center">
+                                            <a href="/tools/menu/edit/<?= $menu['id']; ?>" class="btn btn-info">Edit</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    </div>
                     <?= $pager->links('default', 'custom_pagination') ?>
                 <?php endif ?>
             </div>
