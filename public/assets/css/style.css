@@ -2832,9 +2832,7 @@ body.layout-3 .main-footer {
       font-size: 12px;
       transition: all .5s; }
     .main-sidebar .sidebar-menu li.active > ul.dropdown-menu li a:hover {
-      /* background-color: #f8fafb; */
-      background-color: #eee;
-     }
+      background-color: #f8fafb; }
     .main-sidebar .sidebar-menu li ul.dropdown-menu {
       padding: 0;
       margin: 0;
