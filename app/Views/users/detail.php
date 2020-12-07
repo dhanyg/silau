@@ -15,36 +15,38 @@
     <div class="col-lg-12">
         <div class="card shadow">
             <div class="card-body">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr class="text-center">
-                            <th>Name</th>
-                            <th>Username</th>
-                            <th>Role</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Password</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="text-center">
-                            <td><?= $user['display_name']; ?></td>
-                            <td><?= $user['username']; ?></td>
-                            <td><?= $user['role_name']; ?></td>
-                            <td><?= $user['email'] ? $user['email'] : '-'; ?></td>
-                            <td><?= $user['phone'] ? $user['phone'] : '-'; ?></td>
-                            <td><?= $user['password'] ? '********' : '-'; ?></td>
-                            <td>
-                                <a href="/users/edit/<?= $user['id']; ?>" class="btn btn-info">Edit</a>
-                                <button class="btn btn-warning" id="reset">Reset Password</button>
-                                <button class="btn btn-danger" id="delete">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button class="btn btn-secondary" disabled><em>Created on : <?= date('d M y', strtotime($user['created_at'])); ?></em></button>
-                <button class="btn btn-secondary" disabled><em>Last modified : <?= date('d M y', strtotime($user['updated_at'])); ?></em></button>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr class="text-center">
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th>Role</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Password</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center">
+                                <td><?= $user['display_name']; ?></td>
+                                <td><?= $user['username']; ?></td>
+                                <td><?= $user['role_name']; ?></td>
+                                <td><?= $user['email'] ? $user['email'] : '-'; ?></td>
+                                <td><?= $user['phone'] ? $user['phone'] : '-'; ?></td>
+                                <td><?= $user['password'] ? '********' : '-'; ?></td>
+                                <td>
+                                    <a href="/users/edit/<?= $user['id']; ?>" class="my-1 btn btn-info">Edit</a>
+                                    <button class="my-1 btn btn-warning" id="reset">Reset Password</button>
+                                    <button class="my-1 btn btn-danger" id="delete">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <span class="badge badge-success mb-1" disabled><em>Created on : <?= date('d M y', strtotime($user['created_at'])); ?></em></span>
+                <span class="badge badge-success mb-1" disabled><em>Last modified : <?= date('d M y', strtotime($user['updated_at'])); ?></em></span>
             </div>
         </div>
     </div>

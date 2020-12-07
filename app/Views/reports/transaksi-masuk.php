@@ -13,12 +13,12 @@
                 <div class="mb-4">
                     <h5 class="text-center mb-3">Filter Laporan</h5>
                     <form action="" method="GET" class="form-inline justify-content-center">
-                        <label for="dari_tanggal">Dari</label>
-                        <input type="text" class="datepicker mx-2 form-control form-control-sm" name="dari_tanggal" id="dari_tanggal" required>
-                        <label for="sampai_tanggal">Sampai</label>
-                        <input type="text" class="datepicker mx-2 form-control form-control-sm" name="sampai_tanggal" id="sampai_tanggal" required>
-                        <button type="submit" class="ml-1 btn btn-sm btn-primary">Filter</button>
-                        <a href="/reports/transaksi-masuk" class="ml-2 btn btn-sm btn-secondary">Reset Filter</a>
+                        <label for="dari_tanggal" class="my-1 ">Dari</label>
+                        <input type="text" class="my-1 datepicker mx-2 form-control form-control-sm" name="dari_tanggal" id="dari_tanggal" required>
+                        <label for="sampai_tanggal" class="my-1 ">Sampai</label>
+                        <input type="text" class="my-1 datepicker mx-2 form-control form-control-sm" name="sampai_tanggal" id="sampai_tanggal" required>
+                        <button type="submit" class="my-1 ml-1 btn btn-sm btn-primary">Filter</button>
+                        <a href="/reports/transaksi-masuk" class="my-1 ml-2 btn btn-sm btn-secondary">Reset Filter</a>
                     </form>
                 </div>
                 <?php if (!$transaksi_masuk) : ?>

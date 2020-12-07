@@ -6,15 +6,15 @@
 
 <?= $this->section('body'); ?>
 <div class="row justify-content-between">
-    <div class="col-lg-4">
+    <div class="col-lg-4 my-1">
         <a href="/transactions/transaksi-masuk/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
     </div>
     <?php if (isset($_GET['keyword'])) : ?>
-        <div class="col-lg-4">
+        <div class="col-lg-4 my-1">
             <a href="/transactions/transaksi-masuk" class="btn btn-warning">Reset Pencarian</a>
         </div>
     <?php endif ?>
-    <div class="col-lg-4">
+    <div class="col-lg-4 my-1">
         <form action="" method="get">
             <div class="input-group">
                 <input type="text" class="form-control" name="keyword" placeholder="Ketik nama atau no. transaksi" autocomplete="off">

@@ -6,15 +6,15 @@
 
 <?= $this->section('body'); ?>
 <div class="row justify-content-between">
-    <div class="col-lg-4">
+    <div class="col-lg-4 my-1">
         <a href="/transactions/transaksi-pengambilan/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
     </div>
     <?php if (isset($_GET['keyword'])) : ?>
-        <div class="col-lg-4">
+        <div class="col-lg-4 my-1">
             <a href="/transactions/transaksi-pengambilan" class="btn btn-warning">Reset Pencarian</a>
         </div>
     <?php endif ?>
-    <div class="col-lg-4">
+    <div class="col-lg-4 my-1">
         <form action="" method="get">
             <div class="input-group">
                 <input type="text" class="form-control" name="keyword" placeholder="Ketik nama atau no. transaksi" autocomplete="off">
@@ -54,8 +54,8 @@
                                         <td class="text-center"><?= $data['transaksi_masuk_id']; ?></td>
                                         <td class="text-center"><?= $data['user_creator']; ?></td>
                                         <td class="text-center">
-                                            <a href="/transactions/transaksi-masuk/detail/<?= $data['transaksi_masuk_id']; ?>" class="btn btn-info">Detail Transaksi</a>
-                                            <button type="button" class="btn btn-danger" id="delete-<?= $data['transaksi_masuk_id'] ?>">Delete</button>
+                                            <a href="/transactions/transaksi-masuk/detail/<?= $data['transaksi_masuk_id']; ?>" class="my-1 btn btn-info">Detail Transaksi</a>
+                                            <button type="button" class="my-1 btn btn-danger" id="delete-<?= $data['transaksi_masuk_id'] ?>">Delete</button>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>

@@ -7,8 +7,8 @@
 <?= $this->section('body'); ?>
 <div class="row">
     <div class="col-lg-12">
-        <div class="alert alert-info d-flex align-items-center shadow">
-            <i class="fas fa-info-circle mr-3" style="font-size: 3rem;"></i>
+        <div class="alert alert-info d-sm-flex align-items-center shadow">
+            <i class="d-none d-sm-block fas fa-info-circle mr-3" style="font-size: 3rem;"></i>
             Informasi di bawah ini sudah tercatat secara otomatis. Apabila terdapat transaksi masuk dengan status lunas atau transaksi pengambilan maka pembayaran akan otomatis tercatat di sini. Begitu juga jika terdapat perubahan pada transaksi masuk dan transaksi pengambilan.</div>
     </div>
 </div>
@@ -41,7 +41,7 @@
                                         <td class="text-center"><?= $data['transaksi_masuk_id']; ?></td>
                                         <td class="text-right">Rp<?= number_format($data['jumlah']); ?></td>
                                         <td class="text-center">
-                                            <a href="/transactions/transaksi-masuk/detail/<?= $data['transaksi_masuk_id']; ?>" class="btn btn-info rounded-pill">Detail Transaksi</a>
+                                            <a href="/transactions/transaksi-masuk/detail/<?= $data['transaksi_masuk_id']; ?>" class="btn btn-info rounded-pill">Invoice</a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
