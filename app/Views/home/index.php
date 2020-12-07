@@ -72,26 +72,29 @@
                 <?php if (!$transaksi_masuk) : ?>
                     <h6 class="text-center">belum ada transaksi</h6>
                 <?php else : ?>
-                    <table class="table table-responsive table-borderless table-hover">
-                        <thead>
-                            <tr class="text-center">
-                                <th>#</th>
-                                <th>Nama</th>
-                                <th>Layanan</th>
-                                <th>Tgl. Selesai</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($transaksi_masuk as $tm) : ?>
-                                <tr>
-                                    <td class="text-center"><?= $tm['id']; ?></td>
-                                    <td class="px-3"><?= $tm['nama']; ?></td>
-                                    <td class="text-center"><?= strtoupper($tm['nama_layanan']); ?></td>
-                                    <td class="text-center"><?= date('d/m/Y', strtotime($tm['tgl_selesai'])); ?></td>
+                    <div class="table-responsive">
+                        <table class="table table-borderless table-hover">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>#</th>
+                                    <th>Nama</th>
+                                    <th>Layanan</th>
+                                    <th>Tgl. Selesai</th>
                                 </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($transaksi_masuk as $tm) : ?>
+                                    <tr>
+                                        <td class="text-center"><?= $tm['id']; ?></td>
+                                        <td class="px-3"><?= $tm['nama']; ?></td>
+                                        <td class="text-center"><?= strtoupper($tm['nama_layanan']); ?></td>
+                                        <td class="text-center"><?= date('d/m/Y', strtotime($tm['tgl_selesai'])); ?></td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="/transactions/transaksi-masuk" class="btn btn-sm btn-info">Lihat transaksi</a>
                 <?php endif ?>
             </div>
         </div>

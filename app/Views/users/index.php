@@ -32,29 +32,31 @@
                 <?php if (!$users) : ?>
                     <h6 class="text-center">Tidak ada data</h6>
                 <?php else : ?>
-                    <table class="table table-responsive table-bordered table-striped">
-                        <thead>
-                            <tr class="text-center">
-                                <th>#</th>
-                                <th>User</th>
-                                <th>Role</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $no = 1 + ($perPage * ($currentPage - 1));
-                            foreach ($users as $user) : ?>
-                                <tr>
-                                    <td><?= $no++; ?></td>
-                                    <td><?= $user['display_name']; ?></td>
-                                    <td><?= $user['role_name']; ?></td>
-                                    <td>
-                                        <a href="/users/detail/<?= $user['id']; ?>" class="btn btn-info">Detail</a>
-                                    </td>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>#</th>
+                                    <th>User</th>
+                                    <th>Role</th>
+                                    <th>Actions</th>
                                 </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php $no = 1 + ($perPage * ($currentPage - 1));
+                                foreach ($users as $user) : ?>
+                                    <tr>
+                                        <td><?= $no++; ?></td>
+                                        <td><?= $user['display_name']; ?></td>
+                                        <td><?= $user['role_name']; ?></td>
+                                        <td>
+                                            <a href="/users/detail/<?= $user['id']; ?>" class="btn btn-info">Detail</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    </div>
                     <?= $pager->links('default', 'custom_pagination'); ?>
                 <?php endif ?>
             </div>

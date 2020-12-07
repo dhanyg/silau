@@ -27,47 +27,49 @@
                     <?php if (isset($_GET['dari_tanggal'])) : ?>
                         <a href="/reports/transaksi-masuk/generate-pdf/<?= $_GET['dari_tanggal']; ?>/<?= $_GET['sampai_tanggal']; ?>" class="btn btn-sm btn-danger mb-3"><i class="far fa-file-pdf mr-2"></i>PDF</a>
                     <?php endif ?>
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr class="text-center">
-                                <th>#</th>
-                                <th>Nama</th>
-                                <th>Layanan</th>
-                                <th>Tgl. Masuk</th>
-                                <th>Tgl. Selesai</th>
-                                <th>Harga</th>
-                                <th>Pembayaran</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            foreach ($transaksi_masuk as $data) : ?>
-                                <tr>
-                                    <td class="text-center"><?= $data['id']; ?></td>
-                                    <td><?= $data['nama']; ?></td>
-                                    <td class="text-center"><?= $data['nama_layanan']; ?></td>
-                                    <td class="text-center"><?= date('d-m-Y', strtotime($data['tgl_masuk'])); ?></td>
-                                    <td class="text-center"><?= date('d-m-Y', strtotime($data['tgl_selesai'])); ?></td>
-                                    <td class="text-right">Rp <?= number_format($data['total_harga']); ?></td>
-                                    <td>
-                                        <?php if ($data['lunas'] == 1) : ?>
-                                            Lunas
-                                        <?php else : ?>
-                                            Non-lunas
-                                        <?php endif ?>
-                                    </td>
-                                    <td>
-                                        <?php if ($data['status'] == 1) : ?>
-                                            Selesai
-                                        <?php else : ?>
-                                            Belum Selesai
-                                        <?php endif ?>
-                                    </td>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>#</th>
+                                    <th>Nama</th>
+                                    <th>Layanan</th>
+                                    <th>Tgl. Masuk</th>
+                                    <th>Tgl. Selesai</th>
+                                    <th>Harga</th>
+                                    <th>Pembayaran</th>
+                                    <th>Status</th>
                                 </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($transaksi_masuk as $data) : ?>
+                                    <tr>
+                                        <td class="text-center"><?= $data['id']; ?></td>
+                                        <td><?= $data['nama']; ?></td>
+                                        <td class="text-center"><?= $data['nama_layanan']; ?></td>
+                                        <td class="text-center"><?= date('d-m-Y', strtotime($data['tgl_masuk'])); ?></td>
+                                        <td class="text-center"><?= date('d-m-Y', strtotime($data['tgl_selesai'])); ?></td>
+                                        <td class="text-right">Rp <?= number_format($data['total_harga']); ?></td>
+                                        <td>
+                                            <?php if ($data['lunas'] == 1) : ?>
+                                                Lunas
+                                            <?php else : ?>
+                                                Non-lunas
+                                            <?php endif ?>
+                                        </td>
+                                        <td>
+                                            <?php if ($data['status'] == 1) : ?>
+                                                Selesai
+                                            <?php else : ?>
+                                                Belum Selesai
+                                            <?php endif ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    </div>
                     <?= $pager->links('default', 'custom_pagination') ?>
                 <?php endif ?>
             </div>

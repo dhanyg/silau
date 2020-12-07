@@ -37,8 +37,8 @@
                             <?= $validation->getError('transaksi_masuk_id'); ?>
                         </div>
                     </div>
-                    <a href="/transactions/transaksi-pengambilan" class="btn btn-secondary">Cancel</a>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="/transactions/transaksi-pengambilan" class="btn btn-secondary">Batall</a>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>

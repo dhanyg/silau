@@ -32,44 +32,46 @@
                 <?php if (!$transaksi_masuk) : ?>
                     <h6 class="text-center m-0">Tidak ada data</h6>
                 <?php else : ?>
-                    <table class="table table-responsive table-bordered table-striped">
-                        <thead>
-                            <tr class="text-center">
-                                <th>#</th>
-                                <th>Nama</th>
-                                <th>Layanan</th>
-                                <th>Tgl. Masuk</th>
-                                <th>Tgl. Selesai</th>
-                                <th>Harga</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            foreach ($transaksi_masuk as $data) : ?>
-                                <tr>
-                                    <td class="text-center"><?= $data['id']; ?></td>
-                                    <td class="d-flex justify-content-between align-items-center"><?= $data['nama']; ?>
-                                        <div>
-                                            <?php if ($data['lunas'] == 1) : ?>
-                                                <span class="bg-primary text-white rounded-pill px-2 py-0">lunas</span>
-                                            <?php endif ?>
-                                            <?php if ($data['status'] == 1) : ?>
-                                                <span class="bg-success text-white rounded-pill px-2 py-0"><i class="fas fa-check"></i></span>
-                                            <?php endif ?>
-                                        </div>
-                                    </td>
-                                    <td class="text-center"><?= $data['nama_layanan']; ?></td>
-                                    <td class="text-center"><?= date('d-m-Y', strtotime($data['tgl_masuk'])); ?></td>
-                                    <td class="text-center"><?= date('d-m-Y', strtotime($data['tgl_selesai'])); ?></td>
-                                    <td class="text-right">Rp <?= number_format($data['total_harga']); ?></td>
-                                    <td class="text-center">
-                                        <a href="/transactions/transaksi-masuk/detail/<?= $data['id']; ?>" class="btn btn-info">Detail</a>
-                                    </td>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>#</th>
+                                    <th>Nama</th>
+                                    <th>Layanan</th>
+                                    <th>Tgl. Masuk</th>
+                                    <th>Tgl. Selesai</th>
+                                    <th>Harga</th>
+                                    <th>Actions</th>
                                 </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($transaksi_masuk as $data) : ?>
+                                    <tr>
+                                        <td class="text-center"><?= $data['id']; ?></td>
+                                        <td class="d-flex justify-content-between align-items-center"><?= $data['nama']; ?>
+                                            <div>
+                                                <?php if ($data['lunas'] == 1) : ?>
+                                                    <span class="bg-primary text-white rounded-pill px-2 py-0">lunas</span>
+                                                <?php endif ?>
+                                                <?php if ($data['status'] == 1) : ?>
+                                                    <span class="bg-success text-white rounded-pill px-2 py-0"><i class="fas fa-check"></i></span>
+                                                <?php endif ?>
+                                            </div>
+                                        </td>
+                                        <td class="text-center"><?= $data['nama_layanan']; ?></td>
+                                        <td class="text-center"><?= date('d-m-Y', strtotime($data['tgl_masuk'])); ?></td>
+                                        <td class="text-center"><?= date('d-m-Y', strtotime($data['tgl_selesai'])); ?></td>
+                                        <td class="text-right">Rp <?= number_format($data['total_harga']); ?></td>
+                                        <td class="text-center">
+                                            <a href="/transactions/transaksi-masuk/detail/<?= $data['id']; ?>" class="btn btn-info">Detail</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    </div>
                     <?= $pager->links('default', 'custom_pagination') ?>
                 <?php endif ?>
             </div>

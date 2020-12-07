@@ -27,29 +27,31 @@
                     <?php if (isset($_GET['dari_tanggal'])) : ?>
                         <a href="/reports/transaksi-pengambilan/generate-pdf/<?= $_GET['dari_tanggal']; ?>/<?= $_GET['sampai_tanggal']; ?>" class="btn btn-sm btn-danger mb-3"><i class="far fa-file-pdf mr-2"></i>PDF</a>
                     <?php endif ?>
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr class="text-center">
-                                <th>#</th>
-                                <th>Tgl. Ambil</th>
-                                <th class="text-left">Nama</th>
-                                <th>No. Transaksi</th>
-                                <th>Operator</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $no = 1 + ($perPage * ($currentPage - 1));
-                            foreach ($pengambilan as $data) : ?>
-                                <tr>
-                                    <td class="text-center"><?= $no++; ?></td>
-                                    <td class="text-center"><?= $data['tgl_ambil']; ?></td>
-                                    <td><?= $data['nama']; ?></td>
-                                    <td class="text-center"><?= $data['transaksi_masuk_id']; ?></td>
-                                    <td class="text-center"><?= $data['user_creator']; ?></td>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>#</th>
+                                    <th>Tgl. Ambil</th>
+                                    <th class="text-left">Nama</th>
+                                    <th>No. Transaksi</th>
+                                    <th>Operator</th>
                                 </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php $no = 1 + ($perPage * ($currentPage - 1));
+                                foreach ($pengambilan as $data) : ?>
+                                    <tr>
+                                        <td class="text-center"><?= $no++; ?></td>
+                                        <td class="text-center"><?= $data['tgl_ambil']; ?></td>
+                                        <td><?= $data['nama']; ?></td>
+                                        <td class="text-center"><?= $data['transaksi_masuk_id']; ?></td>
+                                        <td class="text-center"><?= $data['user_creator']; ?></td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    </div>
                     <?= $pager->links('default', 'custom_pagination') ?>
                 <?php endif ?>
             </div>

@@ -19,33 +19,35 @@
                 <?php if (!$pemasukan) : ?>
                     <h6 class="text-center m-0">Belum ada transaksi</h6>
                 <?php else : ?>
-                    <table class="table table-responsive table-bordered table-striped">
-                        <thead>
-                            <tr class="text-center">
-                                <th>#</th>
-                                <th>Tanggal</th>
-                                <th>Keterangan</th>
-                                <th>No. Transaksi</th>
-                                <th>Jumlah</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $no = 1 + ($perPage * ($currentPage - 1));
-                            foreach ($pemasukan as $data) : ?>
-                                <tr>
-                                    <td class="text-center"><?= $no++; ?></td>
-                                    <td class="text-center"><?= date('d/m/Y', strtotime($data['tanggal'])); ?></td>
-                                    <td><?= $data['keterangan']; ?></td>
-                                    <td class="text-center"><?= $data['transaksi_masuk_id']; ?></td>
-                                    <td class="text-right">Rp<?= number_format($data['jumlah']); ?></td>
-                                    <td class="text-center">
-                                        <a href="/transactions/transaksi-masuk/detail/<?= $data['transaksi_masuk_id']; ?>" class="btn btn-info rounded-pill">Detail Transaksi</a>
-                                    </td>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>#</th>
+                                    <th>Tanggal</th>
+                                    <th>Keterangan</th>
+                                    <th>No. Transaksi</th>
+                                    <th>Jumlah</th>
+                                    <th>Action</th>
                                 </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php $no = 1 + ($perPage * ($currentPage - 1));
+                                foreach ($pemasukan as $data) : ?>
+                                    <tr>
+                                        <td class="text-center"><?= $no++; ?></td>
+                                        <td class="text-center"><?= date('d/m/Y', strtotime($data['tanggal'])); ?></td>
+                                        <td><?= $data['keterangan']; ?></td>
+                                        <td class="text-center"><?= $data['transaksi_masuk_id']; ?></td>
+                                        <td class="text-right">Rp<?= number_format($data['jumlah']); ?></td>
+                                        <td class="text-center">
+                                            <a href="/transactions/transaksi-masuk/detail/<?= $data['transaksi_masuk_id']; ?>" class="btn btn-info rounded-pill">Detail Transaksi</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    </div>
                     <?= $pager->links('default', 'custom_pagination') ?>
                 <?php endif ?>
             </div>
