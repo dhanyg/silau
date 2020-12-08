@@ -24,21 +24,20 @@ class TransactionInController extends BaseController
         $keyword = $this->request->getVar('keyword');
         $currentPage = $this->request->getVar('page');
         if ($keyword) {
-            $transaksi_masuk = $this->TransaksiMasuk
-                ->searchTransaction($keyword)
-                ->orderBy('transaksi_masuk.id', 'DESC');
+            $transaksi_masuk = $this->TransaksiMasuk->searchTransaction($keyword);
+            $totalRows = $this->TransaksiMasuk->countRows($keyword);
         } else {
-            $transaksi_masuk = $this->TransaksiMasuk
-                ->getAllTransactions()
-                ->orderBy('transaksi_masuk.id', 'DESC');
+            $transaksi_masuk = $this->TransaksiMasuk->getAllTransactions();
+            $totalRows = $this->TransaksiMasuk->countRows();
         }
         $data = [
             'title' => 'Transactions',
             'header' => 'Transaksi Masuk',
-            'transaksi_masuk' => $transaksi_masuk->paginate(5),
+            'transaksi_masuk' => $transaksi_masuk->orderBy('transaksi_masuk.id', 'DESC')->paginate(5),
             'pager' => $transaksi_masuk->pager,
             'currentPage' => $currentPage ? $currentPage : 1,
-            'perPage' => 5
+            'perPage' => 5,
+            'totalRows' => $totalRows
         ];
         return view('transactions/in/index', $data);
     }

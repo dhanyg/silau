@@ -20,7 +20,8 @@ class CashflowInController extends BaseController
             'pemasukan' => $this->Pemasukan->orderBy('tanggal', 'DESC')->paginate(5),
             'pager' => $this->Pemasukan->pager,
             'currentPage' => $currentPage ? $currentPage : 1,
-            'perPage' => 5
+            'perPage' => 5,
+            'totalRows' => $this->Pemasukan->countRows()
         ];
         return view('cashflow/in/index', $data);
     }

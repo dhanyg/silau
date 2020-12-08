@@ -26,19 +26,37 @@ class TransaksiMasuk extends Model
     {
         $model = new TransaksiMasuk();
         return $model
-            ->select('transaksi_masuk.*, layanan.nama as nama_layanan')
-            ->join('layanan', 'layanan.id = transaksi_masuk.layanan_id')
+            ->getAllTransactions()
             ->where('transaksi_masuk.id', $id);
+        // ->select('transaksi_masuk.*, layanan.nama as nama_layanan')
+        // ->join('layanan', 'layanan.id = transaksi_masuk.layanan_id')
     }
 
     public function searchTransaction($keyword)
     {
         $model = new TransaksiMasuk();
         return $model
-            ->select('transaksi_masuk.*, layanan.nama as nama_layanan')
-            ->join('layanan', 'layanan.id = transaksi_masuk.layanan_id')
+            // ->select('transaksi_masuk.*, layanan.nama as nama_layanan')
+            // ->join('layanan', 'layanan.id = transaksi_masuk.layanan_id')
+            ->getAllTransactions()
             ->like('transaksi_masuk.nama', $keyword)
             ->orLike('transaksi_masuk.id', $keyword);
+    }
+
+    public function countRows($keyword = null)
+    {
+        $model = new TransaksiMasuk();
+        if ($keyword != null) {
+            return $model
+                ->selectCount('transaksi_masuk.id')
+                ->join('layanan', 'layanan.id = transaksi_masuk.layanan_id')
+                ->like('transaksi_masuk.nama', $keyword)
+                ->orLike('transaksi_masuk.id', $keyword)
+                ->get()
+                ->getRow('id');
+        } else {
+            return $model->selectCount('transaksi_masuk.id')->get()->getRow('id');
+        }
     }
 
     public function getCharts()

@@ -19,22 +19,21 @@ class TransactionOutController extends BaseController
     {
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
-            $pengambilan = $this->TransaksiPengambilan
-                ->searchTransaction($keyword)
-                ->orderBy('transaksi_pengambilan.tgl_ambil', 'DESC');
+            $pengambilan = $this->TransaksiPengambilan->searchTransaction($keyword);
+            $totalRows = $this->TransaksiPengambilan->countRows($keyword);
         } else {
-            $pengambilan = $this->TransaksiPengambilan
-                ->getAllTransactions()
-                ->orderBy('transaksi_pengambilan.tgl_ambil', 'DESC');
+            $pengambilan = $this->TransaksiPengambilan->getAllTransactions();
+            $totalRows = $this->TransaksiPengambilan->countRows();
         }
         $currentPage = $this->request->getVar('page');
         $data = [
             'title' => 'Transactions',
             'header' => 'Transaksi Pengambilan',
-            'pengambilan' => $pengambilan->paginate(5),
+            'pengambilan' => $pengambilan->orderBy('transaksi_pengambilan.tgl_ambil', 'DESC')->paginate(5),
             'pager' => $pengambilan->pager,
             'currentPage' => $currentPage ? $currentPage : 1,
-            'perPage' => 5
+            'perPage' => 5,
+            'totalRows' => $totalRows
         ];
         return view('transactions/out/index', $data);
     }

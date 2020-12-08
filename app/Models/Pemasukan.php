@@ -19,6 +19,12 @@ class Pemasukan extends Model
             ->join('transaksi_masuk', 'transaksi_masuk.id = pemasukan.transaksi_masuk_id');
     }
 
+    public function countRows()
+    {
+        $model = new Pemasukan();
+        return $model->selectCount('pemasukan.id')->get()->getRow('id');
+    }
+
     public function getCharts()
     {
         $model = new Pemasukan();

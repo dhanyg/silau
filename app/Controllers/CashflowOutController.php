@@ -16,18 +16,21 @@ class CashflowOutController extends BaseController
     {
         $keyword  = $this->request->getVar('keyword');
         if ($keyword) {
-            $pengeluaran = $this->Pengeluaran->like('keterangan', $keyword)->orderBy('tanggal', 'DESC');
+            $pengeluaran = $this->Pengeluaran->like('keterangan', $keyword);
+            $totalRows = $this->Pengeluaran->countRows($keyword);
         } else {
-            $pengeluaran = $this->Pengeluaran->orderBy('tanggal', 'DESC');
+            $pengeluaran = $this->Pengeluaran;
+            $totalRows = $this->Pengeluaran->countRows();
         }
         $currentPage = $this->request->getVar('page');
         $data = [
             'title' => 'Cash FLow',
             'header' => 'Pengeluaran',
-            'pengeluaran' => $pengeluaran->paginate(5),
+            'pengeluaran' => $pengeluaran->orderBy('tanggal', 'DESC')->paginate(5),
             'currentPage' => $currentPage ? $currentPage : 1,
             'pager' => $pengeluaran->pager,
-            'perPage' => 5
+            'perPage' => 5,
+            'totalRows' => $totalRows
         ];
         return view('cashflow/out/index', $data);
     }

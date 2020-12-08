@@ -32,7 +32,11 @@ class HomeController extends BaseController
             'transaksi_masuk' => $this->TransaksiMasuk
                 ->getAllTransactions()
                 ->orderBy('transaksi_masuk.id', 'Desc')
-                ->findAll(5),
+                ->findAll(3),
+            'transaksi_pengambilan' => $this->Pengambilan
+                ->getAllTransactions()
+                ->orderBy('transaksi_pengambilan.tgl_ambil', 'Desc')
+                ->findAll(3),
             'chart_transaksi_masuk' => $this->TransaksiMasuk->getCharts()->findAll(),
             'chart_pemasukan' => $this->Pemasukan->getCharts()->findAll()
         ];

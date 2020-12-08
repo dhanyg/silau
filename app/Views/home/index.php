@@ -98,14 +98,50 @@
                 <?php endif ?>
             </div>
         </div>
+
+        <div class="card">
+            <div class="card-header h5 d-flex justify-content-between" style="min-height: 0; line-height: normal;">Pengambilan terbaru <i class="fas fa-tasks"></i></div>
+            <div class="card-body">
+                <?php if (!$transaksi_pengambilan) : ?>
+                    <h6 class="text-center">belum ada transaksi</h6>
+                <?php else : ?>
+                    <div class="table-responsive">
+                        <table class="table table-borderless table-hover">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>Tgl. Ambil</th>
+                                    <th>No. Transaksi</th>
+                                    <th>Nama</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($transaksi_pengambilan as $p) : ?>
+                                    <tr>
+                                        <td class="text-center"><?= $p['tgl_ambil']; ?></td>
+                                        <td class="text-center"><?= $p['transaksi_masuk_id']; ?></td>
+                                        <td><?= $p['nama']; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="/transactions/transaksi-pengambilan" class="btn btn-sm btn-info">Lihat transaksi</a>
+                <?php endif ?>
+            </div>
+        </div>
     </div>
     <!-- Chart -->
     <div class="col-lg-6 col-md-6">
         <div class="card">
-            <div class="card-header h5 d-flex justify-content-between" style="min-height: 0; line-height: normal;">Statistik <i class="far fa-chart-bar"></i></div>
+            <div class="card-header h5 d-flex justify-content-between" style="min-height: 0; line-height: normal;">Grafik Transaksi <i class="far fa-chart-bar"></i></div>
             <div class="card-body">
                 <canvas id="chartTransaksi" height="180"></canvas>
-                <hr>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header h5 d-flex justify-content-between" style="min-height: 0; line-height: normal;">Grafik Pemasukan <i class="far fa-chart-bar"></i></div>
+            <div class="card-body">
                 <canvas id="chartPemasukan" height="180"></canvas>
             </div>
         </div>

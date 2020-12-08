@@ -25,9 +25,24 @@ class TransaksiPengambilan extends Model
     {
         $model = new TransaksiPengambilan();
         return $model
-            ->select('transaksi_pengambilan.*, transaksi_masuk.nama')
-            ->join('transaksi_masuk', 'transaksi_masuk.id = transaksi_pengambilan.transaksi_masuk_id')
+            ->getAllTransactions()
             ->like('transaksi_masuk.nama', $keyword)
             ->orLike('transaksi_pengambilan.transaksi_masuk_id', $keyword);
+    }
+
+    public function countRows($keyword = null)
+    {
+        $model = new TransaksiPengambilan();
+        if ($keyword != null) {
+            return $model
+                ->selectCount('transaksi_pengambilan.id')
+                ->join('transaksi_masuk', 'transaksi_masuk.id = transaksi_pengambilan.transaksi_masuk_id')
+                ->like('transaksi_masuk.nama', $keyword)
+                ->orLike('transaksi_pengambilan.transaksi_masuk_id', $keyword)
+                ->get()
+                ->getRow('id');
+        } else {
+            return $model->selectCount('transaksi_pengambilan.id')->get()->getRow('id');
+        }
     }
 }
