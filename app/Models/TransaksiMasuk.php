@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class TransaksiMasuk extends Model
 {
@@ -28,16 +29,12 @@ class TransaksiMasuk extends Model
         return $model
             ->getAllTransactions()
             ->where('transaksi_masuk.id', $id);
-        // ->select('transaksi_masuk.*, layanan.nama as nama_layanan')
-        // ->join('layanan', 'layanan.id = transaksi_masuk.layanan_id')
     }
 
     public function searchTransaction($keyword)
     {
         $model = new TransaksiMasuk();
         return $model
-            // ->select('transaksi_masuk.*, layanan.nama as nama_layanan')
-            // ->join('layanan', 'layanan.id = transaksi_masuk.layanan_id')
             ->getAllTransactions()
             ->like('transaksi_masuk.nama', $keyword)
             ->orLike('transaksi_masuk.id', $keyword);
@@ -57,6 +54,27 @@ class TransaksiMasuk extends Model
         } else {
             return $model->selectCount('transaksi_masuk.id')->get()->getRow('id');
         }
+    }
+
+    public function countTransactionReport($whereQuery = [])
+    {
+        $model = new TransaksiMasuk();
+        $model
+            ->selectCount('transaksi_masuk.id')
+            ->join('layanan', 'layanan.id = transaksi_masuk.layanan_id');
+        if ($whereQuery !== null) {
+            if (is_array($whereQuery)) {
+                if (!empty($whereQuery)) {
+                    foreach ($whereQuery as $key => $query) {
+                        $model->where($query);
+                    }
+                }
+            } else {
+                $model->where($whereQuery);
+            }
+        }
+
+        return $model->get()->getRow('id');
     }
 
     public function getCharts()

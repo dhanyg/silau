@@ -76,6 +76,42 @@
         </div>
     </div>
 </div>
+<?php if ($transaksi_masuk) : ?>
+    <div class="row">
+        <div class="col-sm-6 col-md-3">
+            <div class="card shadow">
+                <div class="card-body text-center text-md-left">
+                    <div class="card-title text-primary font-weight-bolder">Jumlah Transaksi</div>
+                    <div class="h3 font-weight-bold mb-0"><?= $count_jumlah_transaksi; ?></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card shadow">
+                <div class="card-body text-center text-md-left">
+                    <div class="card-title text-primary font-weight-bolder">Transaksi Selesai</div>
+                    <div class="h3 font-weight-bold mb-0"><?= $count_transaksi_selesai; ?></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card shadow">
+                <div class="card-body text-center text-md-left">
+                    <div class="card-title text-primary font-weight-bolder">Transaksi Laundry</div>
+                    <div class="h3 font-weight-bold mb-0"><?= $count_transaksi_laundry; ?></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card shadow">
+                <div class="card-body text-center text-md-left">
+                    <div class="card-title text-primary font-weight-bolder">Transaksi Setrika</div>
+                    <div class="h3 font-weight-bold mb-0"><?= $count_transaksi_setrika; ?></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif ?>
 <?= $this->endSection(); ?>
 
 <?= $this->section('js-libraries'); ?>

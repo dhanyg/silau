@@ -60,6 +60,42 @@
         </div>
     </div>
 </div>
+<?php if ($pemasukan) : ?>
+    <div class="row">
+        <div class="col-sm-6 col-md-3">
+            <div class="card shadow">
+                <div class="card-body text-center text-md-left">
+                    <div class="card-title text-primary font-weight-bolder">Total Pemasukan</div>
+                    <div class="h3 font-weight-bold mb-0"><?= number_format($total_pemasukan); ?></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card shadow">
+                <div class="card-body text-center text-md-left">
+                    <div class="card-title text-primary font-weight-bolder">Jumlah Transaksi</div>
+                    <div class="h3 font-weight-bold mb-0"><?= $count_jumlah_transaksi; ?></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card shadow">
+                <div class="card-body text-center text-md-left">
+                    <div class="card-title text-primary font-weight-bolder">Pembayaran Lunas</div>
+                    <div class="h3 font-weight-bold mb-0"><?= $count_pembayaran_lunas; ?></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card shadow">
+                <div class="card-body text-center text-md-left">
+                    <div class="card-title text-primary font-weight-bolder">Pembayaran Non-lunas</div>
+                    <div class="h3 font-weight-bold mb-0"><?= $count_pembayaran_nonlunas; ?></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif ?>
 <?= $this->endSection(); ?>
 
 <?= $this->section('js-libraries'); ?>

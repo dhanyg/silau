@@ -52,7 +52,10 @@
                             </tbody>
                         </table>
                     </div>
-                    <?= $pager->links('default', 'custom_pagination') ?>
+                    <div class="d-sm-flex justify-content-between align-items-center">
+                        <?= $pager->links('default', 'custom_pagination') ?>
+                        <div>Jumlah Pengambilan : <?= $count_jumlah_pengambilan; ?></div>
+                    </div>
                 <?php endif ?>
             </div>
         </div>

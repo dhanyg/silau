@@ -45,4 +45,25 @@ class TransaksiPengambilan extends Model
             return $model->selectCount('transaksi_pengambilan.id')->get()->getRow('id');
         }
     }
+
+    public function countTransactionReport($whereQuery = [])
+    {
+        $model = new TransaksiPengambilan();
+        $model
+            ->selectCount('transaksi_pengambilan.id')
+            ->join('transaksi_masuk', 'transaksi_masuk.id = transaksi_pengambilan.transaksi_masuk_id');
+        if ($whereQuery !== null) {
+            if (is_array($whereQuery)) {
+                if (!empty($whereQuery)) {
+                    foreach ($whereQuery as $key => $query) {
+                        $model->where($query);
+                    }
+                }
+            } else {
+                $model->where($whereQuery);
+            }
+        }
+
+        return $model->get()->getRow('id');
+    }
 }

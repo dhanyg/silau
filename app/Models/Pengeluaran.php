@@ -23,4 +23,44 @@ class Pengeluaran extends Model
             return $model->selectCount('id')->get()->getRow('id');
         }
     }
+
+    public function countOutcomeReport($whereQuery = [])
+    {
+        $model = new Pengeluaran();
+        $model->selectCount('id');
+
+        if ($whereQuery !== null) {
+            if (is_array($whereQuery)) {
+                if (!empty($whereQuery)) {
+                    foreach ($whereQuery as $key => $query) {
+                        $model->where($query);
+                    }
+                }
+            } else {
+                $model->where($whereQuery);
+            }
+        }
+
+        return $model->get()->getRow('id');
+    }
+
+    public function sumOutcome($whereQuery = [])
+    {
+        $model = new Pengeluaran();
+        $model->selectSum('jumlah');
+
+        if ($whereQuery !== null) {
+            if (is_array($whereQuery)) {
+                if (!empty($whereQuery)) {
+                    foreach ($whereQuery as $key => $query) {
+                        $model->where($query);
+                    }
+                }
+            } else {
+                $model->where($whereQuery);
+            }
+        }
+
+        return $model->get()->getRow('jumlah');
+    }
 }

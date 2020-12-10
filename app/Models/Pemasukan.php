@@ -19,10 +19,46 @@ class Pemasukan extends Model
             ->join('transaksi_masuk', 'transaksi_masuk.id = pemasukan.transaksi_masuk_id');
     }
 
-    public function countRows()
+    public function countRows($whereQuery = [])
     {
         $model = new Pemasukan();
-        return $model->selectCount('pemasukan.id')->get()->getRow('id');
+        $model
+            ->selectCount('pemasukan.id')
+            ->join('transaksi_masuk', 'transaksi_masuk.id = pemasukan.transaksi_masuk_id');
+
+        if ($whereQuery !== null) {
+            if (is_array($whereQuery)) {
+                if (!empty($whereQuery)) {
+                    foreach ($whereQuery as $key => $query) {
+                        $model->where($query);
+                    }
+                }
+            } else {
+                $model->where($whereQuery);
+            }
+        }
+
+        return $model->get()->getRow('id');
+    }
+
+    public function sumIncome($whereQuery = [])
+    {
+        $model = new Pemasukan();
+        $model->selectSum('jumlah');
+
+        if ($whereQuery !== null) {
+            if (is_array($whereQuery)) {
+                if (!empty($whereQuery)) {
+                    foreach ($whereQuery as $key => $query) {
+                        $model->where($query);
+                    }
+                }
+            } else {
+                $model->where($whereQuery);
+            }
+        }
+
+        return $model->get()->getRow('jumlah');
     }
 
     public function getCharts()
