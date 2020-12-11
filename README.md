@@ -4,6 +4,15 @@
 
 SILAU merupakan aplikasi manajemen laundry yang dibuat menggunakan codeigniter 4.  
   
+## Fitur  
+- Manajemen level (role), user, menu, submenu, dan hak akses menu.
+- Manajemen transaksi masuk, pengambilan, pemasukan, dan pengeluaran.
+- 3 level (role) default: administrator, user, owner. Setiap level memiliki hak akses ke menu yang berbeda-beda dan bisa disesuaikan melalui menu Tools > Access.
+- Auto insert saldo pemasukan apabila terdapat transaksi pengambilan.
+- Pencarian data sederhana (belum menggunakan datatables)
+- Cetak invoice ke PDF
+- Cetak laporan ke PDF
+
 ## Requirements
 
 - Cek requirement [codeigniter 4](https://codeigniter.com/user_guide/intro/requirements.html)
