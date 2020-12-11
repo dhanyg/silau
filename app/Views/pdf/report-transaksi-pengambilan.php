@@ -100,6 +100,9 @@
                 <?php endforeach ?>
             </tbody>
         </table>
+        <div style="margin-top: 20px;">
+            <span><strong>Jumlah Pengambilan :</strong> &nbsp; <?= $jumlah_pengambilan; ?></span>
+        </div>
     </section>
 </body>
 

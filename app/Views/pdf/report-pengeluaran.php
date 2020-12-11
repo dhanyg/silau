@@ -100,6 +100,22 @@
                 <?php endforeach ?>
             </tbody>
         </table>
+
+        <div style="margin-top: 20px; margin-bottom: 20px;">
+            <table>
+                <tr>
+                    <th colspan="2" class="text-center">REKAP DATA</th>
+                </tr>
+                <tr>
+                    <td class="text-center"><strong>Total Pengeluaran</td>
+                    <td class="text-center"><strong>Jumlah Data</td>
+                </tr>
+                <tr>
+                    <td class="text-center">Rp <?= number_format($total_pengeluaran); ?></td>
+                    <td class="text-center"><?= $jumlah_data; ?></td>
+                </tr>
+            </table>
+        </div>
     </section>
 </body>
 

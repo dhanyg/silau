@@ -75,7 +75,11 @@ class PDFController extends BaseController
                 ->join('layanan', 'layanan.id = transaksi_masuk.layanan_id')
                 ->where("transaksi_masuk.tgl_masuk BETWEEN '$dateStart' AND '$dateEnd'")
                 ->orderBy('transaksi_masuk.tgl_masuk')
-                ->findAll()
+                ->findAll(),
+            'jumlah_transaksi' => $this->TransaksiMasuk->countTransactionReport(["tgl_masuk BETWEEN '$dateStart' AND '$dateEnd'"]),
+            'transaksi_selesai' => $this->TransaksiMasuk->countTransactionReport(["tgl_masuk BETWEEN '$dateStart' AND '$dateEnd'", "transaksi_masuk.status = 1"]),
+            'transaksi_laundry' => $this->TransaksiMasuk->countTransactionReport(["tgl_masuk BETWEEN '$dateStart' AND '$dateEnd'", "layanan.nama LIKE '%laundry%'"]),
+            'transaksi_setrika' => $this->TransaksiMasuk->countTransactionReport(["tgl_masuk BETWEEN '$dateStart' AND '$dateEnd'", "layanan.nama LIKE '%setrika%'"]),
         ];
         $html = view('pdf/report-transaksi-masuk', $data);
         $fileName = 'transaksi-masuk-' . $dateStart . '-sampai-' . $dateEnd . '.pdf';
@@ -93,7 +97,8 @@ class PDFController extends BaseController
                 ->join('transaksi_masuk', 'transaksi_masuk.id = transaksi_pengambilan.transaksi_masuk_id')
                 ->where("transaksi_pengambilan.tgl_ambil BETWEEN '$dateStart' AND '$dateEnd'")
                 ->orderBy('transaksi_pengambilan.tgl_ambil')
-                ->findAll()
+                ->findAll(),
+            'jumlah_pengambilan' => $this->TransaksiPengambilan->countTransactionReport("tgl_ambil BETWEEN '$dateStart' AND '$dateEnd'"),
         ];
         $html = view('pdf/report-transaksi-pengambilan', $data);
         $fileName = 'transaksi-pengambilan-' . $dateStart . '-sampai-' . $dateEnd . '.pdf';
@@ -111,7 +116,11 @@ class PDFController extends BaseController
                 ->join('transaksi_masuk', 'transaksi_masuk.id = pemasukan.transaksi_masuk_id')
                 ->where("pemasukan.tanggal BETWEEN '$dateStart' AND '$dateEnd'")
                 ->orderBy('tanggal')
-                ->findAll()
+                ->findAll(),
+            'total_pemasukan' => $this->Pemasukan->sumIncome("tanggal BETWEEN '$dateStart' AND '$dateEnd'"),
+            'jumlah_transaksi' => $this->Pemasukan->countRows("tanggal BETWEEN '$dateStart' AND '$dateEnd'"),
+            'pembayaran_lunas' => $this->Pemasukan->countRows(["tanggal BETWEEN '$dateStart' AND '$dateEnd'", 'transaksi_masuk.lunas = 1']),
+            'pembayaran_nonlunas' => $this->Pemasukan->countRows(["tanggal BETWEEN '$dateStart' AND '$dateEnd'", 'transaksi_masuk.lunas = 0'])
         ];
         $html = view('pdf/report-pemasukan', $data);
         $fileName = 'pemasukan-' . $dateStart . '-sampai-' . $dateEnd . '.pdf';
@@ -127,7 +136,9 @@ class PDFController extends BaseController
             'data' => $this->Pengeluaran
                 ->where("tanggal BETWEEN '$dateStart' AND '$dateEnd'")
                 ->orderBy('tanggal')
-                ->findAll()
+                ->findAll(),
+            'total_pengeluaran' => $this->Pengeluaran->sumOutcome("tanggal BETWEEN '$dateStart' AND '$dateEnd'"),
+            'jumlah_data' => $this->Pengeluaran->countOutcomeReport("tanggal BETWEEN '$dateStart' AND '$dateEnd'"),
         ];
         // dd($data['data']);
         $html = view('pdf/report-pengeluaran', $data);

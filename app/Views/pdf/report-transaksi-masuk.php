@@ -119,6 +119,26 @@
                 <?php endforeach ?>
             </tbody>
         </table>
+
+        <div style="margin-top: 20px; margin-bottom: 20px;">
+            <table>
+                <tr>
+                    <th colspan="4" class="text-center">REKAP DATA</th>
+                </tr>
+                <tr>
+                    <td class="text-center"><strong>Jumlah Transaksi</td>
+                    <td class="text-center"><strong>Transaksi Selesai</td>
+                    <td class="text-center"><strong>Transaksi Laundry</td>
+                    <td class="text-center"><strong>Transaksi Setrika</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><?= $jumlah_transaksi; ?></td>
+                    <td class="text-center"><?= $transaksi_selesai; ?></td>
+                    <td class="text-center"><?= $transaksi_laundry; ?></td>
+                    <td class="text-center"><?= $transaksi_setrika; ?></td>
+                </tr>
+            </table>
+        </div>
     </section>
 </body>
 

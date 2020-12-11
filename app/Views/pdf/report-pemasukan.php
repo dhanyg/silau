@@ -104,6 +104,26 @@
                 <?php endforeach ?>
             </tbody>
         </table>
+
+        <div style="margin-top: 20px; margin-bottom: 20px;">
+            <table>
+                <tr>
+                    <th colspan="4" class="text-center">REKAP DATA</th>
+                </tr>
+                <tr>
+                    <td class="text-center"><strong>Total Pemasukan</td>
+                    <td class="text-center"><strong>Jumlah Transaksi</td>
+                    <td class="text-center"><strong>Pembayaran Lunas</td>
+                    <td class="text-center"><strong>Pembayaran Non-lunas</td>
+                </tr>
+                <tr>
+                    <td class="text-center">Rp <?= number_format($total_pemasukan); ?></td>
+                    <td class="text-center"><?= $jumlah_transaksi; ?></td>
+                    <td class="text-center"><?= $pembayaran_lunas; ?></td>
+                    <td class="text-center"><?= $pembayaran_nonlunas; ?></td>
+                </tr>
+            </table>
+        </div>
     </section>
 </body>
 
